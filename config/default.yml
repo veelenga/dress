@@ -1,0 +1,12 @@
+dress:
+  dates:
+    regex: '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}'
+    color: :yellow
+
+  urls:
+    regex: '(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})'
+    color: :blue
+
+  parenthesis:
+    regex: '\([^)]+\)'
+    color: [:red, :bright, :underline]
