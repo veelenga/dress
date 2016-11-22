@@ -1,0 +1,4 @@
+dress:
+  test_config_entry:
+    regex: '*.'
+    color: :black

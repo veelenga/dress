@@ -54,7 +54,7 @@ defmodule Dress.Cli do
       """
       \t-h          Shows this help
       \t-c config   Path to config file
-      \tconfig      Config filename in #{Dress.Config.default_dir} folder omitting extension
+      \tconfig      Config filename in #{Dress.Config.dir} folder omitting extension
 
       Examples:
       \t$ tail -f log/development.log | dress rails

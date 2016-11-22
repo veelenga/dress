@@ -1,11 +1,9 @@
 defmodule Dress.Config do
 
-  @dir "~/.dress/"
+  @dir Path.expand "~/.dress/"
   @ext ".yml"
 
-  def default_dir do
-    Path.expand @dir
-  end
+  def dir, do: @dir
 
   def load(path) do
     loaded = YamlElixir.read_from_file(path, atoms: true)
@@ -15,33 +13,39 @@ defmodule Dress.Config do
       end)
 
     {:ok, loaded}
-  catch
-    x -> { :error,
-      case x do
-        { :yamerl_exception, [errors] } -> elem(errors, 2)
-        _ -> "Failed to load config '#{path}'"
-      end
-    }
+  rescue x -> handle_error x
+  catch  x -> handle_error x
   end
 
-  def find(name, dir \\ default_dir) do
-    name = Path.basename(name, @ext)
+  def find(name, dir \\ @dir) do
+    name = Path.basename name, @ext
 
     case ls = File.ls dir do
       { :ok, files } ->
         case search_file(name, files) do
-          found when is_binary(found) -> { :ok, Path.join [dir, found] }
-          _ -> { :error, "Config file '#{name}.yml' not found in '#{dir}'"}
+          f when is_binary(f) -> { :ok, Path.join [dir, f] }
+          _ -> handle_error "'#{name}.yml' not found in '#{dir}'"
         end
       { :error, _ } -> ls
     end
+  end
+
+  defp handle_error(x) do
+    reason = case x do
+      x when is_binary(x)             -> "Config can't be loaded: #{x}"
+      %{ message: message }           -> "Config can't be loaded: #{message}"
+      { :yamerl_exception, [errors] } -> errors |> elem(2) |> List.to_string
+      _                               -> "Unable to load this config"
+    end
+
+    { :error, reason }
   end
 
   defp load_config_entry(entry) when is_map(entry) do
     for { key, val } <- entry, into: %{} do
       key = String.to_atom(key)
       case key do
-        :regex -> { key, val |> Regex.compile |> elem(1) }
+        :regex -> { key, Regex.compile!(val) }
         _      -> { key, val }
       end
     end
