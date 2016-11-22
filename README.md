@@ -1,24 +1,23 @@
+<img src='https://media.githubusercontent.com/media/veelenga/ss/master/dress/logo.png' width='100' align='right'>
+
 # Dress
 
 Cli app that makes your stdout fancy.
 
+![](https://media.githubusercontent.com/media/veelenga/ss/master/dress/demo.gif)
+
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+Manually:
 
-  1. Add `dress` to your list of dependencies in `mix.exs`:
+```sh
+$ git clone https://github.com/veelenga/dress && cd dress/
+$ mix escript.build
+$ ./dress
+```
 
-    ```elixir
-    def deps do
-      [{:dress, "~> 0.1.0"}]
-    end
-    ```
+## Usage
 
-  2. Ensure `dress` is started before your application:
-
-    ```elixir
-    def application do
-      [applications: [:dress]]
-    end
-    ```
-
+```sh
+$ tail -f log/development.log | dress -c config/default.yml
+```

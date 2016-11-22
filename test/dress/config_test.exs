@@ -1,8 +1,6 @@
 defmodule ConfigTest do
   use ExUnit.Case, async: true
 
-  doctest Dress.Config
-
   @config_dir Path.expand "./test/fixtures/configs/"
   @valid      Path.join [@config_dir, "valid.yml"]
   @invalid    Path.join [@config_dir, "invalid_regex.yml"]

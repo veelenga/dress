@@ -1,10 +1,29 @@
 defmodule Dress.Config do
+  @moduledoc """
+  Represents interface to handle configuration files.
+  """
 
   @dir Path.expand "~/.dress/"
   @ext ".yml"
 
+  @doc """
+  Returns a path to the directory where config files located.
+  """
   def dir, do: @dir
 
+  @doc """
+  Loads config from configuration file.
+
+  `path` represents a path to yml file.
+
+  Examples:
+
+    iex> Dress.Config.load("config/default.yml")
+    { :ok, config }
+
+    iex> Dress.Config.load("no_such_file")
+    { :error, reason }
+  """
   def load(path) do
     loaded = YamlElixir.read_from_file(path, atoms: true)
     |> Map.get("dress")
@@ -17,6 +36,21 @@ defmodule Dress.Config do
   catch  x -> handle_error x
   end
 
+  @doc """
+  Finds configuration file in config directory.
+  `name` represents a name of file.
+
+  Examples:
+
+    iex> Dress.Config.find("default", "./config")
+    {:ok, "./config/default.yml"}
+
+    iex> Dress.Config.find("default.yml", "./config")
+    {:ok, "./config/default.yml"}
+
+    iex> Dress.Config.find("no_such_file", "./config")Dress.Config.find("no_such_file", "./config")
+    {:error, reason }
+  """
   def find(name, dir \\ @dir) do
     name = Path.basename name, @ext
 
