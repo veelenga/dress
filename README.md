@@ -12,6 +12,7 @@ Manually:
 
 ```sh
 $ git clone https://github.com/veelenga/dress && cd dress/
+$ mix deps.get
 $ mix escript.build
 $ ./dress
 ```
