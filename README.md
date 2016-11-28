@@ -1,6 +1,6 @@
 <img src='https://media.githubusercontent.com/media/veelenga/ss/master/dress/logo.png' width='100' align='right'>
 
-# Dress
+# Dress [![Build Status](https://travis-ci.org/veelenga/dress.svg?branch=master)](https://travis-ci.org/veelenga/dress)
 
 Cli app that makes your stdout fancy.
 
