@@ -8,7 +8,7 @@ defmodule ConfigTest do
   @subject Dress.Config
 
   test "dir/0 returns path to dir" do
-    assert File.dir?(@subject.dir)
+    assert @subject.dir != nil
   end
 
   test "load/1 loads config when it is valid" do
