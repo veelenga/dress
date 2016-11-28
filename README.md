@@ -6,6 +6,8 @@ Cli app that makes your stdout fancy.
 
 ![](https://media.githubusercontent.com/media/veelenga/ss/master/dress/demo.gif)
 
+For now you need to create your own configuration file using [this](https://github.com/veelenga/dress/blob/master/config/default.yml) example.
+
 ## Installation
 
 Manually:
@@ -21,4 +23,32 @@ $ ./dress
 
 ```sh
 $ tail -f log/development.log | dress -c config/default.yml
+```
+
+## Config file
+
+Your configuration file must to be placed to `~/.dress/` folder and follow yml format:
+
+```yml
+# ~/.dress/rails.yml
+dress:
+  # colorize dates in yellow color
+  dates:
+    regex: '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}'
+    color: :yellow
+
+  # format urls, so those will have blue color and be underlined
+  urls:
+    regex: '(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})'
+    format: [:blue, :underline]
+
+  # improve time format
+  time:
+    regex: '(\d\d):(\d\d):(\d\d)'
+    replace: '\1h\2m\3s'
+
+  # skip some useless lines
+  trash:
+    regex: 'line containing this will not be shown'
+    skip: true
 ```
