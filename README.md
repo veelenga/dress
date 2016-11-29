@@ -27,10 +27,10 @@ $ tail -f log/development.log | dress -c config/default.yml
 
 ## Config file
 
-Your configuration file must to be placed to `~/.dress/` folder and follow yml format:
+Your configuration file must be placed to `~/.dress/` folder and follow yaml format:
 
 ```yml
-# ~/.dress/rails.yml
+# ~/.dress/jacket.yml
 dress:
   # colorize dates in yellow color
   dates:
@@ -52,3 +52,11 @@ dress:
     regex: 'line containing this will not be shown'
     skip: true
 ```
+
+And you can use it in the following way:
+
+```sh
+$ tail -f log/development.log | dress jacket
+```
+
+Be smart, automate routine stuff !
