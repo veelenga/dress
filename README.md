@@ -10,6 +10,13 @@ For now you need to create your own configuration file using [this](https://gith
 
 ## Installation
 
+Via `brew`:
+
+```sh
+$ brew tap veelenga/tap
+$ brew install dress
+```
+
 Manually:
 
 ```sh
