@@ -1,10 +1,10 @@
-<img src='https://media.githubusercontent.com/media/veelenga/bin/master/dress/logo.png' width='100' align='right'>
+<img src='https://gitcdn.link/repo/veelenga/bin/master/dress/logo.png' width='100' align='right'>
 
 # Dress [![Build Status](https://travis-ci.org/veelenga/dress.svg?branch=master)](https://travis-ci.org/veelenga/dress)
 
 Cli app that makes your stdout fancy.
 
-![](https://media.githubusercontent.com/media/veelenga/bin/master/dress/demo.gif)
+![](https://gitcdn.link/repo/veelenga/bin/master/dress/demo.gif)
 
 For now you need to create your own configuration file using [this](https://github.com/veelenga/dress/blob/master/config/default.yml) example.
 
